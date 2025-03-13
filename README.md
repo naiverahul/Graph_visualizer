@@ -34,8 +34,8 @@ This is a Spring Boot web application that provides an interactive graph visuali
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/your_username/graph-visualizer.git
-   cd graph-visualizer
+   git clone https://github.com/naiverahul/Graph_visualizer
+   cd Graph_visualizer
    ```
 
 2. **Build the application:**
@@ -61,7 +61,7 @@ After building the application, you can start it from the terminal.
 2. **Using the packaged JAR:**
 
    ```bash
-   java -jar target/graph-visualizer.jar
+   java -jar target/Graph_visualizer.jar
    ```
 
 3. **Access the application:**
