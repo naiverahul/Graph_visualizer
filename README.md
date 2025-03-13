@@ -69,10 +69,9 @@ After building the application, you can start it from the terminal.
    Open your browser and navigate to:
 
    ```
-   http://localhost:8080
+   http://localhost:9090
    ```
 
-   (Adjust the port if necessary based on your configuration.)
 
 ## Running the App with IntelliJ IDEA
 
