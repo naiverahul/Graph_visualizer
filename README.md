@@ -23,7 +23,7 @@ This is a Spring Boot web application that provides an interactive graph visuali
 ## Prerequisites
 
 - Java JDK 11 (or later)
-- Maven (or Gradle, if preferred)  
+- Maven (or Gradle, if preferred)
 - Git
 - IntelliJ IDEA (or your favorite Java IDE)
 
@@ -36,19 +36,8 @@ This is a Spring Boot web application that provides an interactive graph visuali
    cd Graph_visualizer
    ```
 
-2. **Build the application:**
+2. Using Maven:
 
-   Using IntelliJ IDEA:
-   - Open the project in IntelliJ IDEA.
-   - Build the project using Maven or Gradle.
-   - Run the application and open the following link in your browser:
-     
-     ```
-     http://localhost:9090
-     ```
-
-   Using Maven:
-   
    ```bash
    mvn clean package
    ```
@@ -82,15 +71,18 @@ After building the application, you can start it from the terminal.
 ## Running the App with IntelliJ IDEA
 
 1. **Import the project:**
+
    - Open IntelliJ IDEA.
    - Click on **File > Open...** and select the project’s root directory.
    - IntelliJ will detect the Maven (or Gradle) configuration and import the project.
 
 2. **Locate the main class:**
-   - In the Project Explorer, find the main application class (e.g., `GraphVisualizerApplication.java` in the package `com.example.graphvisualizer`).
+
+   - In the Project Explorer, find the main application class (`VisualizerApplication.java` in the package `com.graph.visualizer`).
 
 3. **Run the application:**
-   - Right-click the main class and select **Run 'GraphVisualizerApplication'**.
+
+   - Right-click the main class and select **Run 'VisualizerApplication'**.
    - The application console will display startup logs indicating that the Spring Boot app is running.
 
 4. **Access the application:**
