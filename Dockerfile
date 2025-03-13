@@ -6,7 +6,7 @@ WORKDIR /app
 
 # Copy the JAR file from build/libs into the container
 # If you have multiple JARs, you can copy a specific one or use *.jar
-COPY build/libs/*.jar app.jar
+COPY build/libs/visualizer-0.0.1-SNAPSHOT.jar app.jar
 
 # Expose port 9090 (or whichever port you use by default)
 EXPOSE 9090
