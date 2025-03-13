@@ -85,10 +85,12 @@ document.addEventListener("DOMContentLoaded", function() {
             graphData.vertices = vertices;
             graphData.edges = edges;
         } else {
-            // Process Adjacency List Input (Format Example:
-            // 0: [(1, 2), (2, 5), (3, 1), (4, 3), (5, 4)],
-            // 1: [(0, 2), (2, 1), (4, 6), (6, 2)],
-            // ...)
+            // Process Adjacency List Input
+            // Expected unweighted format example:
+            // 0: [1, 2, 3, 4, 5],
+            // 1: [0, 2, 4, 6],
+            // 2: [0, 1, 3, 5, 7],
+            // ... or weighted using tuple format: 0: [(1, 2), 3, 4]
             const adjacencyText = document.getElementById("adjacency-text").value.trim();
             const adjVertices = [];
             const adjEdges = [];
@@ -97,34 +99,42 @@ document.addEventListener("DOMContentLoaded", function() {
             lines.forEach(line => {
                 line = line.trim();
                 if (!line) return;
-                // Remove trailing commas
-                if (line.endsWith(",")) {
-                    line = line.slice(0, -1);
-                }
-                // Expect format: key: [(neighbor, weight), (neighbor, weight), ...]
+                if (line.endsWith(",")) line = line.slice(0, -1);
                 const colonIndex = line.indexOf(":");
                 if (colonIndex === -1) return;
                 const vertexId = line.slice(0, colonIndex).trim();
-                // Add vertex for the key if not exists
                 if (!adjVertices.find(v => v.id === vertexId)) {
                     adjVertices.push({ id: vertexId, label: vertexId });
                 }
                 let neighborsPart = line.slice(colonIndex + 1).trim();
-                // Remove enclosing square brackets if present
                 if (neighborsPart.startsWith("[") && neighborsPart.endsWith("]")) {
                     neighborsPart = neighborsPart.slice(1, -1).trim();
                 }
-                // Use regex to match tuples like (neighbor, weight)
-                const tupleRegex = /\((\d+),\s*(\d+)\)/g;
-                let match;
-                while ((match = tupleRegex.exec(neighborsPart)) !== null) {
-                    const neighbor = match[1].trim();
-                    const weight = parseFloat(match[2].trim()) || 1;
-                    if (!adjVertices.find(v => v.id === neighbor)) {
-                        adjVertices.push({ id: neighbor, label: neighbor });
+                const neighbors = neighborsPart.split(",");
+                neighbors.forEach(nbr => {
+                    nbr = nbr.trim();
+                    if (!nbr) return;
+                    // Check if the neighbor is in tuple format e.g., "(1, 2)"
+                    if (nbr.startsWith("(") && nbr.endsWith(")")) {
+                        let content = nbr.slice(1, -1).trim();
+                        let parts = content.split(",");
+                        if (parts.length >= 2) {
+                            let neighborId = parts[0].trim();
+                            let weight = parseFloat(parts[1].trim()) || 1;
+                            if (!adjVertices.find(v => v.id === neighborId)) {
+                                adjVertices.push({ id: neighborId, label: neighborId });
+                            }
+                            adjEdges.push({ source: vertexId, target: neighborId, weight: weight });
+                        }
+                    } else {
+                        // If neighbor is a bare number, default weight is 1
+                        let neighborId = nbr;
+                        if (!adjVertices.find(v => v.id === neighborId)) {
+                            adjVertices.push({ id: neighborId, label: neighborId });
+                        }
+                        adjEdges.push({ source: vertexId, target: neighborId, weight: 1 });
                     }
-                    adjEdges.push({ source: vertexId, target: neighbor, weight: weight });
-                }
+                });
             });
 
             graphData.vertices = adjVertices;

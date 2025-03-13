@@ -27,7 +27,7 @@
                 <div id="input-mode-selection">
                     <span>Input Mode:</span>
                     <label>
-                        <input type="radio" name="inputMode" value="edge" checked> Weighted Edge List
+                        <input type="radio" name="inputMode" value="edge" checked> Weighted Edge Input
                     </label>
                     <label>
                         <input type="radio" name="inputMode" value="adjacency"> Adjacency List
@@ -60,10 +60,9 @@
             <div id="adjacency-input" style="display:none;">
                 <h2>Adjacency List Input</h2>
                 <textarea id="adjacency-text" placeholder="Enter graph as:
-0: [(1, 2), (2, 5), (3, 1), (4, 3), (5, 4)],
-1: [(0, 2), (2, 1), (4, 6), (6, 2)],
-...
-" rows="8"></textarea>
+0: [1, 2, 3, 4, 5],
+1: [0, 2, 4, 6],
+..... )" rows="8"></textarea>
             </div>
             <button id="visualize-graph" class="visualize-btn">Visualize Graph</button>
         </div>
@@ -73,6 +72,12 @@
         </div>
     </div>
 </div>
+
+<!-- Fixed Footer with GitHub and LinkedIn links -->
+<footer>
+    <a href="https://github.com/your_username" target="_blank" class="github-link">GitHub Source Code</a>
+    <a href="https://www.linkedin.com/in/your_profile" target="_blank" class="linkedin-link">LinkedIn</a>
+</footer>
 
 <!-- Include D3.js and custom JavaScript -->
 <script src="https://d3js.org/d3.v6.min.js"></script>

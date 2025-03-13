@@ -94,7 +94,7 @@ body.dark-mode #right-panel {
     align-items: center;
 }
 
-/* Input form area inside left panel */
+/* Input form areas inside left panel */
 #graph-input,
 #adjacency-input {
     padding: 20px;
@@ -207,4 +207,37 @@ body.dark-mode #graph {
     dominant-baseline: middle;
     font-size: 12px;
     fill: inherit;
+}
+
+/* Dark mode specific overrides for nodes, node labels, and edge labels */
+body.dark-mode svg .nodes circle {
+    fill: skyblue !important;
+}
+
+body.dark-mode .node-labels text {
+    fill: black !important;
+}
+
+body.dark-mode .edge-labels text {
+    fill: white !important;
+}
+
+/* Footer with fixed position */
+footer {
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    font-size: 0.9rem;
+}
+
+footer a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+body.dark-mode footer a {
+    color: #66b3ff;
 }
