@@ -1,12 +1,15 @@
-# Use whichever JDK version you need
+# Use an OpenJDK 17 base image (adjust if you need a different version)
 FROM openjdk:17-jdk-alpine
 
-# Copy the JAR from the 'target' folder (Maven) or 'build/libs' folder (Gradle).
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} app.jar
+# Set the working directory in the container
+WORKDIR /app
 
-# Expose 8080 in the container
+# Copy the JAR file from build/libs into the container
+# If you have multiple JARs, you can copy a specific one or use *.jar
+COPY build/libs/*.jar app.jar
+
+# Expose port 9090 (or whichever port you use by default)
 EXPOSE 9090
 
-# Run the jar
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+# Run the JAR
+ENTRYPOINT ["java", "-jar", "app.jar"]
