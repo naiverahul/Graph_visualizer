@@ -1,3 +1,5 @@
+![image](https://github.com/user-attachments/assets/7abf72c2-7d37-4f36-b529-381929f59aa4)
+
 # Graph Visualizer (Java)
 
 This is a Spring Boot web application that provides an interactive graph visualizer. It supports both edge input and adjacency list input modes (with support for weighted/unweighted graphs), a directed/undirected toggle, and a dark mode option. The UI includes fixed footer links to GitHub and LinkedIn.
