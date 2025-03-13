@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Graph Visualizer</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Graph Visualizer</h1>
+    <div id="main-layout">
+        <!-- Left panel: Input settings and details -->
+        <div id="left-panel">
+            <div id="graph-settings">
+                <label>
+                    <input type="checkbox" id="dark-mode-toggle"> Dark Mode
+                </label>
+                <div class="graph-type">
+                    <span>Graph Type:</span>
+                    <label>
+                        <input type="radio" name="graphType" value="undirected" checked> Undirected
+                    </label>
+                    <label>
+                        <input type="radio" name="graphType" value="directed"> Directed
+                    </label>
+                </div>
+                <div id="input-mode-selection">
+                    <span>Input Mode:</span>
+                    <label>
+                        <input type="radio" name="inputMode" value="edge" checked> Weighted Edge List
+                    </label>
+                    <label>
+                        <input type="radio" name="inputMode" value="adjacency"> Adjacency List
+                    </label>
+                </div>
+            </div>
+            <!-- Edge Input Mode -->
+            <div id="graph-input">
+                <div class="input-section">
+                    <h2>Vertices</h2>
+                    <div class="input-group">
+                        <input type="text" id="vertex-id" placeholder="Vertex ID">
+                        <input type="text" id="vertex-label" placeholder="Vertex Label">
+                        <button id="add-vertex">Add Vertex</button>
+                    </div>
+                    <ul id="vertex-list"></ul>
+                </div>
+                <div class="input-section">
+                    <h2>Edges</h2>
+                    <div class="input-group">
+                        <input type="text" id="edge-source" placeholder="Source Vertex">
+                        <input type="text" id="edge-target" placeholder="Target Vertex">
+                        <input type="number" id="edge-weight" placeholder="Weight (default 1)">
+                        <button id="add-edge">Add Edge</button>
+                    </div>
+                    <ul id="edge-list"></ul>
+                </div>
+            </div>
+            <!-- Adjacency List Input Mode -->
+            <div id="adjacency-input" style="display:none;">
+                <h2>Adjacency List Input</h2>
+                <textarea id="adjacency-text" placeholder="Enter graph as:
+0: [(1, 2), (2, 5), (3, 1), (4, 3), (5, 4)],
+1: [(0, 2), (2, 1), (4, 6), (6, 2)],
+...
+" rows="8"></textarea>
+            </div>
+            <button id="visualize-graph" class="visualize-btn">Visualize Graph</button>
+        </div>
+        <!-- Right panel: Graph visualization -->
+        <div id="right-panel">
+            <div id="graph"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Include D3.js and custom JavaScript -->
+<script src="https://d3js.org/d3.v6.min.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

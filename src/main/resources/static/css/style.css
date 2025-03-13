@@ -1,0 +1,210 @@
+/* Reset defaults */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Base styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f0f2f5;
+    color: #333;
+    transition: background 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+    background: #222;
+    color: #ddd;
+}
+
+/* Container for the entire page */
+.container {
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Main heading */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: inherit;
+    font-size: 2rem;
+}
+
+/* Main layout container (holds left and right panels) */
+#main-layout {
+    display: flex;
+    flex-direction: column; /* Mobile default: stacked */
+    gap: 20px;
+}
+
+/* Left & Right panels */
+#left-panel,
+#right-panel {
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+    border-radius: 8px;
+    transition: background 0.3s;
+    width: 100%;
+}
+
+body.dark-mode #left-panel,
+body.dark-mode #right-panel {
+    background: #333;
+}
+
+/* Desktop media query: side-by-side layout */
+@media (min-width: 992px) {
+    #main-layout {
+        flex-direction: row;
+    }
+    /* Fixed width for left panel */
+    #left-panel {
+        flex: 0 0 350px;
+        margin-right: 20px;
+    }
+    /* Right panel takes remaining space */
+    #right-panel {
+        flex: 1;
+    }
+}
+
+/* Graph settings row */
+#graph-settings {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+#graph-settings label,
+#graph-settings span {
+    font-size: 16px;
+}
+
+/* Input mode selection */
+#input-mode-selection {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* Input form area inside left panel */
+#graph-input,
+#adjacency-input {
+    padding: 20px;
+}
+
+/* Input sections (Vertices, Edges) */
+.input-section {
+    margin-bottom: 20px;
+}
+
+.input-section h2 {
+    margin-bottom: 10px;
+    color: inherit;
+    font-size: 1.1rem;
+}
+
+/* Input groups */
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.input-group input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    flex: 1;
+    font-size: 0.95rem;
+}
+
+.input-group button {
+    padding: 10px 16px;
+    border: none;
+    background: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: background 0.3s;
+}
+
+.input-group button:hover {
+    background: #0056b3;
+}
+
+/* Lists for vertices/edges */
+ul {
+    list-style: none;
+    max-height: 120px;
+    overflow-y: auto;
+    padding-left: 10px;
+    margin-top: 5px;
+}
+
+ul li {
+    margin-bottom: 4px;
+    font-size: 0.9rem;
+}
+
+/* Visualize button */
+.visualize-btn {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background: #28a745;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+
+.visualize-btn:hover {
+    background: #218838;
+}
+
+/* Adjacency list textarea styling */
+#adjacency-input textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 0.95rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+/* Graph container in right panel */
+#graph {
+    width: 100%;
+    height: 600px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
+    position: relative;
+    transition: background 0.3s;
+}
+
+body.dark-mode #graph {
+    background: #444;
+    border-color: #666;
+}
+
+/* Center node labels */
+.node-labels text {
+    pointer-events: none;
+    text-anchor: middle;
+    dominant-baseline: middle;
+    font-size: 12px;
+    fill: inherit;
+}
